@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 
-import 'hotelCard.dart';
 import '../models/card.dart';
+import 'hotelCard.dart';
 
 final Color primaryColor = HexColor('#54D3C2');
 final Color secondaryColor = HexColor('#54D3C2');
@@ -12,22 +12,21 @@ final ColorScheme colorScheme = const ColorScheme.light().copyWith(
   secondary: secondaryColor,
 );
 
-
 class HotelsPage extends StatelessWidget {
-  HotelsPage({super.key}){
+  HotelsPage({super.key}) {
     addDummyData();
   }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(colorScheme: colorScheme,fontFamily: 'Roboto',
-      ),
+      theme: ThemeData(colorScheme: colorScheme, fontFamily: 'Roboto'),
       home: Scaffold(
         appBar: AppBar(
           title: Text(
             "Explore",
             textAlign: TextAlign.center,
-            style: TextStyle(fontWeight: FontWeight.bold,fontFamily: 'Roboto'),
+            style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Roboto'),
           ),
           centerTitle: true,
           backgroundColor: primaryColor,
@@ -151,15 +150,15 @@ class HotelsPage extends StatelessWidget {
                         ),
                         SizedBox(width: 10, height: 10),
                         Flexible(
-                            child: ListView.separated(
-                              itemCount: cards.length,
-                              itemBuilder: (context, index) {
-                                return HotelCard(cardData: cards[index]);
-                              },
-                              separatorBuilder: (context, index) {
-                                return SizedBox(height: 10);
-                              },
-                            )
+                          child: ListView.separated(
+                            itemCount: cards.length,
+                            itemBuilder: (context, index) {
+                              return HotelCard(cardData: cards[index]);
+                            },
+                            separatorBuilder: (context, index) {
+                              return SizedBox(height: 10);
+                            },
+                          ),
                         ),
                       ],
                     ),
@@ -180,7 +179,7 @@ void addDummyData() {
       hotelName: 'Grand Royal Hotel',
       price: 180,
       location: 'Wembley, London',
-      imageAssetPath:'assets/images/hotel_1.png',
+      imageAssetPath: 'assets/images/hotel_1.png',
     ),
   );
   cards.add(
