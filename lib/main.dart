@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'hotel_sample/views/HotelsPage.dart';
+import 'hotel_sample/views/hotels_page.dart';
 
 void main() {
   runApp(const MyApp());

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 
 import '../models/card.dart';
-import 'hotelCard.dart';
+import 'hotel_card.dart';
 
 final Color primaryColor = HexColor('#54D3C2');
 final Color secondaryColor = HexColor('#54D3C2');
