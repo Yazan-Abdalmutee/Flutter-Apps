@@ -25,7 +25,7 @@ class HotelsPage extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: Text(
-            "Explore",
+            "Exploree",
             textAlign: TextAlign.center,
             style: TextStyle(fontWeight: FontWeight.bold,fontFamily: 'Roboto'),
           ),
