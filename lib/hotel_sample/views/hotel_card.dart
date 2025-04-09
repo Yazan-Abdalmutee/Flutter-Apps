@@ -75,7 +75,7 @@ class HotelCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
                   children: [
-                
+
                     Row(
                       children: [
                         Text(cardData.location),
