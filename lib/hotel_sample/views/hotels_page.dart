@@ -62,7 +62,7 @@ class HotelsPage extends StatelessWidget {
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(
                                     30,
-                                  ), // circular corners
+                                  ),
                                 ),
                               ),
                             ),
