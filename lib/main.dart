@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ui_samples/xylophone/views/colors_page.dart';
 
 import 'hotel_sample/views/hotels_page.dart';
 
@@ -11,6 +12,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: HotelsPage());
+    return  HotelsPage();
   }
 }
