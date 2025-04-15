@@ -40,9 +40,11 @@ class Tile extends StatelessWidget {
   Color color;
   String noteSound;
 
+  @override
   Widget build(BuildContext context) {
     return Expanded(
       child: GestureDetector(
+
         onTap: ()async
     {
 

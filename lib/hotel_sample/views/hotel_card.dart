@@ -7,7 +7,7 @@ class HotelCard extends StatelessWidget {
   final CardData cardData;
   final Color primaryColor = HexColor('#54D3C2');
 
-  HotelCard({required this.cardData});
+  HotelCard({super.key, required this.cardData});
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +75,6 @@ class HotelCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
                   children: [
-
                     Row(
                       children: [
                         Text(cardData.location),

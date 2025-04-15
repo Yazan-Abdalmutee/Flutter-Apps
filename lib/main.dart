@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_samples/xylophone/views/colors_page.dart';
 
-import 'hotel_sample/views/hotels_page.dart';
+import 'fitness_magazine/views/magazine_home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,6 +11,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  HotelsPage();
+    return FitnessPage();
   }
 }

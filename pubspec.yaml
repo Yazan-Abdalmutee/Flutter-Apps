@@ -28,15 +28,18 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  flutter_localizations: # Add this line
+    sdk: flutter
   flutter:
     sdk: flutter
-  flutter_hex_color: ^2.0.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   just_audio: ^0.9.46
   flutter_launcher_icons: ^0.14.3
+  flutter_hex_color: ^2.0.0
+
 
 flutter_launcher_icons:
   android: "launcher_icon"
@@ -79,8 +82,10 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/images/fitness_magazine_images/
     - assets/icons/
     - assets/audio/
+    - assets/texts/fitness_magazine_texts/
   fonts:
     - family: Roboto
       fonts:
@@ -88,7 +93,11 @@ flutter:
         - asset: assets/fonts/Roboto-Medium.ttf
         - asset: assets/fonts/Roboto-Bold.ttf
           weight: 700
-
+    - family: Somar
+      fonts:
+        - asset: assets/fonts/fitness_magazine_fonts/Somar-Regular.otf
+        - asset: assets/fonts/fitness_magazine_fonts/Somar-Black.otf
+        - asset: assets/fonts/fitness_magazine_fonts/Somar-Bold.otf
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 
