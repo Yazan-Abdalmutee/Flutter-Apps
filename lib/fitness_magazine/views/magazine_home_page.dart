@@ -26,6 +26,7 @@ class FitnessPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+
       title: 'Fitness Magazines',
       debugShowCheckedModeBanner: false,
       localizationsDelegates: const [
@@ -63,7 +64,9 @@ class HomePage extends StatelessWidget {
           ),
           centerTitle: true,
         ),
-        body: Padding(
+        body:
+
+        Padding(
           padding: const EdgeInsets.all(15.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -215,7 +218,7 @@ void addSubCardsData() {
       category: 'تغذية',
       color: greenColor,
       description:
-          '''الميرميّة هي عبارة عن نبات أو عشبة تنتمي للعائلة الشفويّة (النعناع) بجانب الأعشاب الأخرى مثل الخُزامى، وإكليل الجبل، والريحان، وهي شُجيرة دائمة الخضرة ومُعمّرة، أوراقها مُتوسّطة الحجم ورماديّة اللون، وسيقانها خشبيّة صَغيرة، وتستمدّ اسمها
+      '''الميرميّة هي عبارة عن نبات أو عشبة تنتمي للعائلة الشفويّة (النعناع) بجانب الأعشاب الأخرى مثل الخُزامى، وإكليل الجبل، والريحان، وهي شُجيرة دائمة الخضرة ومُعمّرة، أوراقها مُتوسّطة الحجم ورماديّة اللون، وسيقانها خشبيّة صَغيرة، وتستمدّ اسمها
       ''',
       imageAssetPath: 'assets/images/fitness_magazine_images/img5.png',
     ),
@@ -253,7 +256,7 @@ void addSubCardsData() {
       category: 'صحة',
       color: Colors.blue,
       description:
-          '''السُل مرض معدٍ خطير يُصيب الرئتين في الأساس. تنتقل البكتيريا التي تتسبَّب في الإصابة بمرض السُل من شخص إلى آخر من خلال الرذاذ الذي يخرج في الهواء عبر السعال والعطس.
+      '''السُل مرض معدٍ خطير يُصيب الرئتين في الأساس. تنتقل البكتيريا التي تتسبَّب في الإصابة بمرض السُل من شخص إلى آخر من خلال الرذاذ الذي يخرج في الهواء عبر السعال والعطس.
 
 بعدما كان هذا المرض نادرًا في البلدان النامية، بدأت حالات عدوى السُّل في التزايد في عام 1985 ، ويرجع ذلك -إلى حد م
       ''',

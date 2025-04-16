@@ -85,7 +85,6 @@ flutter:
     - assets/images/fitness_magazine_images/
     - assets/icons/
     - assets/audio/
-    - assets/texts/fitness_magazine_texts/
   fonts:
     - family: Roboto
       fonts:
