@@ -4,7 +4,6 @@ class MainCardData {
   String category;
   String title;
   String description;
-
   String imageAssetPath;
   Color color;
 
