@@ -20,54 +20,57 @@ class SubCard extends StatelessWidget {
           ),
         );
       },
-      child: Card(
-        color: mainCardData.color,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Hero(
-              tag: mainCardData.tag,
-              child: SizedBox(
-                width: 150,
-                child: CachedNetworkImage(
-                  height: 140,
-                  imageUrl: mainCardData.imageAssetPath,
-                  fit:BoxFit.fill ,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(20),
+        child: Card(
+          color: mainCardData.color,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Hero(
+                tag: mainCardData.tag,
+                child: SizedBox(
+                  width: 150,
+                  child: CachedNetworkImage(
+                    height: 140,
+                    imageUrl: mainCardData.imageAssetPath,
+                    fit:BoxFit.fill ,
+                  ),
                 ),
               ),
-            ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        maxLines: 3,
-                        overflow: TextOverflow.ellipsis,
-                        mainCardData.description,
-                        style: TextStyle(
-                          fontSize: 15,
-                          color: Colors.white,
-                          fontFamily: 'Somar',
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          maxLines: 3,
+                          overflow: TextOverflow.ellipsis,
+                          mainCardData.description,
+                          style: TextStyle(
+                            fontSize: 15,
+                            color: Colors.white,
+                            fontFamily: 'Somar',
+                          ),
                         ),
                       ),
-                    ),
-                    Row(
-                      children: [
-                        Spacer(),
-                        Icon(Icons.share, color: Colors.white),
-                        SizedBox(width: 6,),
-                        Icon(Icons.favorite_border_outlined, color: Colors.white),
-                        SizedBox(width: 6,),
-                        Icon(Icons.remove_red_eye_outlined, color: Colors.white),
-                      ],
-                    ),
-                  ],
+                      Row(
+                        children: [
+                          Spacer(),
+                          Icon(Icons.share, color: Colors.white),
+                          SizedBox(width: 6,),
+                          Icon(Icons.favorite_border_outlined, color: Colors.white),
+                          SizedBox(width: 6,),
+                          Icon(Icons.remove_red_eye_outlined, color: Colors.white),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

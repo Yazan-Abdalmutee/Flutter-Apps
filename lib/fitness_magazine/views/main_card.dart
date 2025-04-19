@@ -31,12 +31,16 @@ class MainCard extends StatelessWidget {
               children: [
                 Hero(
                   tag: mainCardData.tag,
-                  child: SizedBox(
-                    height: 220,
-                    child: CachedNetworkImage(
-                      width: 310,
-                      imageUrl: mainCardData.imageAssetPath,
-                      fit:BoxFit.fill ,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(15),
+                    child: SizedBox(
+                      height: 220,
+                      child: CachedNetworkImage(
+                        width: 310,
+                        imageUrl: mainCardData.imageAssetPath,
+                        fit:BoxFit.fill ,
+                    
+                      ),
                     ),
                   ),
                 ),
