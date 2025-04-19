@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 import '../models/main_card.dart';
+import '../utilities/color_map.dart';
 
 import 'package:flutter_ui_samples/fitness_magazine/views/articlePage.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+
 
 class MainCard extends StatelessWidget {
   final MainCardData mainCardData;
@@ -59,7 +61,7 @@ class MainCard extends StatelessWidget {
             ),
             SizedBox(height: 10),
             Container(
-              color: mainCardData.color,
+              color: getCategoryColor(mainCardData.category),
               width: 100,
               alignment: Alignment.center,
               child: Text(

@@ -9,10 +9,7 @@ import 'package:flutter_ui_samples/fitness_magazine/views/sub_card.dart';
 final List<MainCardData> mainCards = [];
 final List<MainCardData> subCards = [];
 
-final greenColor = Color(0xFfB4cf66);
-final blueColor = Color(0xFF79bde8);
-final pinkColor = Color(0xFFf05e8e);
-final yellowColor = Color(0xFFfccd0a);
+
 
 class FitnessPage extends StatelessWidget {
   FitnessPage({super.key}) {
@@ -145,7 +142,6 @@ void addMainCardsData() {
   mainCards.add(
     MainCardData(
       category: 'تغذية',
-      color: greenColor,
       description: createLongTexts(1)!,
       imageUrl: 'https://media.istockphoto.com/id/1210634323/photo/avocado-on-old-wooden-table-in-bowl.webp?a=1&b=1&s=612x612&w=0&k=20&c=ZQLXFhn0WVdOLBNQGU6RqkusJRUWsNg_JVAL2JFI0_E=',
       title: '10 فوائد مذهلة لزيت الأفوكادو',
@@ -155,7 +151,6 @@ void addMainCardsData() {
   mainCards.add(
     MainCardData(
       category: 'صحة',
-      color: blueColor,
       description: createLongTexts(2)!,
       imageUrl: 'https://images.unsplash.com/photo-1670192117184-d07467e203b3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8JUQ5JTgxJUQ5JTgyJUQ4JUIxJTIwJUQ4JUE3JUQ5JTg0JUQ4JUFGJUQ5JTg1fGVufDB8fDB8fHww',
       title: 'فقر الدم .. الأسباب، الأعراض،',
@@ -165,7 +160,6 @@ void addMainCardsData() {
   mainCards.add(
     MainCardData(
       category: 'لياقة',
-      color: yellowColor,
       description: createLongTexts(3)!,
       imageUrl: 'https://media.istockphoto.com/id/1149241593/photo/man-doing-cross-training-exercise-with-rope.webp?a=1&b=1&s=612x612&w=0&k=20&c=IjKWG-7_43sRh-cPC0reJMXgtgb9L_g4uAHWZa_p7TA=',
       title: '5 تمارين لانقاص الوزن',
@@ -175,7 +169,6 @@ void addMainCardsData() {
   mainCards.add(
     MainCardData(
       category: 'جمال',
-      color: pinkColor,
       description: createLongTexts(4)!,
       imageUrl: 'https://vid.alarabiya.net/images/2020/01/06/3cffc2ac-a0a8-464c-bc21-833a26c4d808/3cffc2ac-a0a8-464c-bc21-833a26c4d808.jpg?crop=1:1&width=1000',
       title: 'فوائد الزنجبيل المطحون للشعر',
@@ -187,7 +180,6 @@ void addSubCardsData() {
   subCards.add(
     MainCardData(
       category: 'تغذية',
-      color: greenColor,
       description: createLongTexts(1)!,
       title: '10 فوائد مذهلة لزيت الأفوكادو',
       imageUrl: 'https://media.istockphoto.com/id/1210634323/photo/avocado-on-old-wooden-table-in-bowl.webp?a=1&b=1&s=612x612&w=0&k=20&c=ZQLXFhn0WVdOLBNQGU6RqkusJRUWsNg_JVAL2JFI0_E=',
@@ -196,7 +188,6 @@ void addSubCardsData() {
   subCards.add(
     MainCardData(
       category: 'تغذية',
-      color: greenColor,
       title: 'فوائد الميرمية',
       description:
           '''الميرميّة هي عبارة عن نبات أو عشبة تنتمي للعائلة الشفويّة (النعناع) بجانب الأعشاب الأخرى مثل الخُزامى، وإكليل الجبل، والريحان، وهي شُجيرة دائمة الخضرة ومُعمّرة، أوراقها مُتوسّطة الحجم ورماديّة اللون، وسيقانها خشبيّة صَغيرة، وتستمدّ اسمها
@@ -208,7 +199,6 @@ void addSubCardsData() {
   subCards.add(
     MainCardData(
       category: 'صحة',
-      color: Colors.blue,
       title: 'فقر الدم .. الأسباب، الأعراض',
       description: createLongTexts(2)!,
       imageUrl: 'https://images.unsplash.com/photo-1670192117184-d07467e203b3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8JUQ5JTgxJUQ5JTgyJUQ4JUIxJTIwJUQ4JUE3JUQ5JTg0JUQ4JUFGJUQ5JTg1fGVufDB8fDB8fHww',
@@ -218,7 +208,6 @@ void addSubCardsData() {
   subCards.add(
     MainCardData(
       category: 'جمال',
-      color: pinkColor,
       title: 'فوائد الزنجبيل المطحون للشعر',
       description: createLongTexts(4)!,
       imageUrl: 'https://vid.alarabiya.net/images/2020/01/06/3cffc2ac-a0a8-464c-bc21-833a26c4d808/3cffc2ac-a0a8-464c-bc21-833a26c4d808.jpg?crop=1:1&width=1000',
@@ -228,7 +217,6 @@ void addSubCardsData() {
   subCards.add(
     MainCardData(
       category: 'لياقة',
-      color: yellowColor,
       description: createLongTexts(3)!,
       title: '5 تمارين لانقاص الوزن',
       imageUrl: 'https://media.istockphoto.com/id/1149241593/photo/man-doing-cross-training-exercise-with-rope.webp?a=1&b=1&s=612x612&w=0&k=20&c=IjKWG-7_43sRh-cPC0reJMXgtgb9L_g4uAHWZa_p7TA=',
@@ -238,7 +226,6 @@ void addSubCardsData() {
   subCards.add(
     MainCardData(
       category: 'صحة',
-      color: Colors.blue,
       title: 'مرض السل',
       description:
           '''السُل مرض معدٍ خطير يُصيب الرئتين في الأساس. تنتقل البكتيريا التي تتسبَّب في الإصابة بمرض السُل من شخص إلى آخر من خلال الرذاذ الذي يخرج في الهواء عبر السعال والعطس.

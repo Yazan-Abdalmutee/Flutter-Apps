@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_ui_samples/fitness_magazine/utilities/color_map.dart';
 import '../models/main_card.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
@@ -24,7 +25,7 @@ class SubCard extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
         child: Card(
-          color: mainCardData.color,
+          color: getCategoryColor(mainCardData.category),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
