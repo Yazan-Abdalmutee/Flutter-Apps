@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_ui_samples/fitness_magazine/utilities/color_map.dart';
+import 'package:flutter_ui_samples/apps/fitness_magazine/utilities/color_map.dart';
 import '../models/main_card.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter_ui_samples/fitness_magazine/views/articlePage.dart';
+import 'package:flutter_ui_samples/apps/fitness_magazine/views/articlePage.dart';
 
 class SubCard extends StatelessWidget {
   final MainCardData mainCardData;

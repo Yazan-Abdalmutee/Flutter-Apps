@@ -5,7 +5,7 @@ import 'main_card.dart';
 import '../utilities/color_map.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_ui_samples/fitness_magazine/views/sub_card.dart';
+import 'package:flutter_ui_samples/apps/fitness_magazine/views/sub_card.dart';
 
 final List<MainCardData> mainCards = [];
 final List<MainCardData> subCards = [];
@@ -86,7 +86,6 @@ class HomePage extends StatelessWidget {
               TabBar(
                 indicatorColor: Colors.black,
                 dividerColor: Colors.white,
-                padding: EdgeInsets.only(bottom: 10),
                 tabs: [
                   createTabBerText('تغذية'),
                   createTabBerText('صحة'),

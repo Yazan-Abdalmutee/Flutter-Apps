@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../models/main_card.dart';
 import '../utilities/color_map.dart';
 
-import 'package:flutter_ui_samples/fitness_magazine/views/articlePage.dart';
+import 'package:flutter_ui_samples/apps/fitness_magazine/views/articlePage.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 
