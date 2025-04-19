@@ -15,16 +15,17 @@ final yellowColor = Color(0xFFfccd0a);
 
 class FitnessPage extends StatelessWidget {
   FitnessPage({super.key}) {
-    mainCards.clear();
-    subCards.clear();
-    addMainCardsData();
-    addSubCardsData();
+
   }
 
   final List<Locale> appSupportedLocales = const [Locale('ar')];
 
   @override
   Widget build(BuildContext context) {
+    mainCards.clear();
+    subCards.clear();
+    addMainCardsData();
+    addSubCardsData();
     //print(MediaQuery.of(context).size);
     return MaterialApp(
       title: 'Fitness Magazines',
