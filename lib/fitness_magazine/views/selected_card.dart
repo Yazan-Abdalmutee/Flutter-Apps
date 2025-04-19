@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -25,12 +26,13 @@ class SelectedCard extends StatelessWidget {
           children: [
             Stack(
               children: [
-                Container(
-                  height: 300,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(mainCardData.imageAssetPath),
-                      fit: BoxFit.fill,
+                Hero(
+                   tag: mainCardData.tag,
+                  child: SizedBox(
+                    height: 300,
+                    child: CachedNetworkImage(
+                      imageUrl: mainCardData.imageAssetPath,
+                      fit:BoxFit.fill ,
                     ),
                   ),
                 ),
@@ -41,7 +43,7 @@ class SelectedCard extends StatelessWidget {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    icon: Icon(Icons.arrow_forward, color: Colors.white),
+                    icon: Icon(Icons.arrow_back, color: Colors.white),
                   ),
                 ),
               ],

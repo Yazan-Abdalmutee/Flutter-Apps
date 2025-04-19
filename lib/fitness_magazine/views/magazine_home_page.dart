@@ -3,11 +3,11 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_ui_samples/fitness_magazine/views/sub_card.dart';
 
 import '../models/main_card.dart';
-import '../models/sub_card.dart';
 import 'main_card.dart';
 
 final List<MainCardData> mainCards = [];
-final List<SubCardData> subCards = [];
+final List<MainCardData> subCards = [];
+
 final greenColor = Color(0xFfB4cf66);
 final blueColor = Color(0xFF79bde8);
 final pinkColor = Color(0xFFf05e8e);
@@ -25,8 +25,8 @@ class FitnessPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //print(MediaQuery.of(context).size);
     return MaterialApp(
-
       title: 'Fitness Magazines',
       debugShowCheckedModeBanner: false,
       localizationsDelegates: const [
@@ -64,9 +64,7 @@ class HomePage extends StatelessWidget {
           ),
           centerTitle: true,
         ),
-        body:
-
-        Padding(
+        body: Padding(
           padding: const EdgeInsets.all(15.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -90,47 +88,19 @@ class HomePage extends StatelessWidget {
                 dividerColor: Colors.white,
                 padding: EdgeInsets.only(bottom: 10),
                 tabs: [
-                  Text(
-                    "تغذية",
-                    style: TextStyle(
-                      fontSize: 19,
-                      color: Colors.black,
-                      fontFamily: 'Somar',
-                    ),
-                  ),
-                  Text(
-                    "صحة",
-                    style: TextStyle(
-                      fontSize: 19,
-                      color: Colors.black,
-                      fontFamily: 'Somar',
-                    ),
-                  ),
-                  Text(
-                    "جمال",
-                    style: TextStyle(
-                      fontSize: 19,
-                      color: Colors.black,
-                      fontFamily: 'Somar',
-                    ),
-                  ),
-                  Text(
-                    "لياقة",
-                    style: TextStyle(
-                      fontSize: 19,
-                      color: Colors.black,
-                      fontFamily: 'Somar',
-                    ),
-                  ),
+                  createTabBerText('تغذية'),
+                  createTabBerText('صحة'),
+                  createTabBerText('جمال'),
+                  createTabBerText('لياقة'),
                 ],
               ),
               Expanded(
                 child: TabBarView(
                   children: [
-                    buildOfSubCards("تغذية"),
-                    buildOfSubCards("صحة"),
-                    buildOfSubCards("جمال"),
-                    buildOfSubCards("لياقة"),
+                    createSubCardWidget("تغذية"),
+                    createSubCardWidget("صحة"),
+                    createSubCardWidget("جمال"),
+                    createSubCardWidget("لياقة"),
                   ],
                 ),
               ),
@@ -141,14 +111,21 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget buildOfSubCards(String category) {
-    List<SubCardData> filteredCards = filterCardsByCategory(category);
+  Widget createTabBerText(String text) {
+    return Text(
+      text,
+      style: TextStyle(fontSize: 19, color: Colors.black, fontFamily: 'Somar'),
+    );
+  }
+
+  Widget createSubCardWidget(String category) {
+    List<MainCardData> filteredCards = filterCardsByCategory(category);
     return ListView.separated(
       itemCount: filteredCards.length,
       itemBuilder: (context, index) {
         return SizedBox(
           height: 140,
-          child: SubCard(subCardData: filteredCards[index]),
+          child: SubCard(mainCardData: filteredCards[index]),
         );
       },
       separatorBuilder: (context, index) {
@@ -158,7 +135,7 @@ class HomePage extends StatelessWidget {
   }
 }
 
-List<SubCardData> filterCardsByCategory(String category) {
+List<MainCardData> filterCardsByCategory(String category) {
   return subCards.where((card) => card.category == category).toList();
 }
 
@@ -168,8 +145,9 @@ void addMainCardsData() {
       category: 'تغذية',
       color: greenColor,
       description: createLongTexts(1)!,
-      imageAssetPath: 'assets/images/fitness_magazine_images/img1.png',
+      imageAssetPath: 'https://media.istockphoto.com/id/1210634323/photo/avocado-on-old-wooden-table-in-bowl.webp?a=1&b=1&s=612x612&w=0&k=20&c=ZQLXFhn0WVdOLBNQGU6RqkusJRUWsNg_JVAL2JFI0_E=',
       title: '10 فوائد مذهلة لزيت الأفوكادو',
+      tag: 'avokadoTag',
     ),
   );
 
@@ -178,8 +156,9 @@ void addMainCardsData() {
       category: 'صحة',
       color: blueColor,
       description: createLongTexts(2)!,
-      imageAssetPath: 'assets/images/fitness_magazine_images/img2.png',
+      imageAssetPath: 'https://images.unsplash.com/photo-1670192117184-d07467e203b3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8JUQ5JTgxJUQ5JTgyJUQ4JUIxJTIwJUQ4JUE3JUQ5JTg0JUQ4JUFGJUQ5JTg1fGVufDB8fDB8fHww',
       title: 'فقر الدم .. الأسباب، الأعراض،',
+      tag: 'bloodTag',
     ),
   );
 
@@ -188,8 +167,9 @@ void addMainCardsData() {
       category: 'لياقة',
       color: yellowColor,
       description: createLongTexts(3)!,
-      imageAssetPath: 'assets/images/fitness_magazine_images/img3.png',
+      imageAssetPath: 'https://media.istockphoto.com/id/1149241593/photo/man-doing-cross-training-exercise-with-rope.webp?a=1&b=1&s=612x612&w=0&k=20&c=IjKWG-7_43sRh-cPC0reJMXgtgb9L_g4uAHWZa_p7TA=',
       title: '5 تمارين لانقاص الوزن',
+      tag: 'weightTag',
     ),
   );
 
@@ -198,69 +178,82 @@ void addMainCardsData() {
       category: 'جمال',
       color: pinkColor,
       description: createLongTexts(4)!,
-      imageAssetPath: 'assets/images/fitness_magazine_images/img4.png',
+      imageAssetPath: 'https://vid.alarabiya.net/images/2020/01/06/3cffc2ac-a0a8-464c-bc21-833a26c4d808/3cffc2ac-a0a8-464c-bc21-833a26c4d808.jpg?crop=1:1&width=1000',
       title: 'فوائد الزنجبيل المطحون للشعر',
+      tag: 'gingerTag',
     ),
   );
 }
 
 void addSubCardsData() {
   subCards.add(
-    SubCardData(
+    MainCardData(
       category: 'تغذية',
       color: greenColor,
       description: createLongTexts(1)!,
-      imageAssetPath: 'assets/images/fitness_magazine_images/img1.png',
+      title: '10 فوائد مذهلة لزيت الأفوكادو',
+      imageAssetPath: 'https://media.istockphoto.com/id/1210634323/photo/avocado-on-old-wooden-table-in-bowl.webp?a=1&b=1&s=612x612&w=0&k=20&c=ZQLXFhn0WVdOLBNQGU6RqkusJRUWsNg_JVAL2JFI0_E=',
+      tag: '1',
     ),
   );
   subCards.add(
-    SubCardData(
+    MainCardData(
       category: 'تغذية',
       color: greenColor,
+      title: 'فوائد الميرمية',
+      tag: '2',
       description:
-      '''الميرميّة هي عبارة عن نبات أو عشبة تنتمي للعائلة الشفويّة (النعناع) بجانب الأعشاب الأخرى مثل الخُزامى، وإكليل الجبل، والريحان، وهي شُجيرة دائمة الخضرة ومُعمّرة، أوراقها مُتوسّطة الحجم ورماديّة اللون، وسيقانها خشبيّة صَغيرة، وتستمدّ اسمها
+          '''الميرميّة هي عبارة عن نبات أو عشبة تنتمي للعائلة الشفويّة (النعناع) بجانب الأعشاب الأخرى مثل الخُزامى، وإكليل الجبل، والريحان، وهي شُجيرة دائمة الخضرة ومُعمّرة، أوراقها مُتوسّطة الحجم ورماديّة اللون، وسيقانها خشبيّة صَغيرة، وتستمدّ اسمها
       ''',
-      imageAssetPath: 'assets/images/fitness_magazine_images/img5.png',
+      imageAssetPath: 'https://images.unsplash.com/photo-1606841634219-d7dbdd97b1ec?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8U2FnZXxlbnwwfHwwfHx8MA%3D%3D',
     ),
   );
 
   subCards.add(
-    SubCardData(
+    MainCardData(
       category: 'صحة',
       color: Colors.blue,
+      title: 'فقر الدم .. الأسباب، الأعراض',
       description: createLongTexts(2)!,
-      imageAssetPath: 'assets/images/fitness_magazine_images/img2.png',
+      tag: '3',
+      imageAssetPath: 'https://images.unsplash.com/photo-1670192117184-d07467e203b3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8JUQ5JTgxJUQ5JTgyJUQ4JUIxJTIwJUQ4JUE3JUQ5JTg0JUQ4JUFGJUQ5JTg1fGVufDB8fDB8fHww',
     ),
   );
 
   subCards.add(
-    SubCardData(
+    MainCardData(
       category: 'جمال',
       color: pinkColor,
+      title: 'فوائد الزنجبيل المطحون للشعر',
       description: createLongTexts(4)!,
-      imageAssetPath: 'assets/images/fitness_magazine_images/img4.png',
+      tag: '4',
+      imageAssetPath: 'https://vid.alarabiya.net/images/2020/01/06/3cffc2ac-a0a8-464c-bc21-833a26c4d808/3cffc2ac-a0a8-464c-bc21-833a26c4d808.jpg?crop=1:1&width=1000',
     ),
   );
 
   subCards.add(
-    SubCardData(
+    MainCardData(
       category: 'لياقة',
       color: yellowColor,
       description: createLongTexts(3)!,
-      imageAssetPath: 'assets/images/fitness_magazine_images/img3.png',
+      title: '5 تمارين لانقاص الوزن',
+      tag: '5',
+      imageAssetPath: 'https://media.istockphoto.com/id/1149241593/photo/man-doing-cross-training-exercise-with-rope.webp?a=1&b=1&s=612x612&w=0&k=20&c=IjKWG-7_43sRh-cPC0reJMXgtgb9L_g4uAHWZa_p7TA=',
     ),
   );
 
   subCards.add(
-    SubCardData(
+    MainCardData(
       category: 'صحة',
       color: Colors.blue,
+      title: 'مرض السل',
+      tag: '6',
       description:
-      '''السُل مرض معدٍ خطير يُصيب الرئتين في الأساس. تنتقل البكتيريا التي تتسبَّب في الإصابة بمرض السُل من شخص إلى آخر من خلال الرذاذ الذي يخرج في الهواء عبر السعال والعطس.
+          '''السُل مرض معدٍ خطير يُصيب الرئتين في الأساس. تنتقل البكتيريا التي تتسبَّب في الإصابة بمرض السُل من شخص إلى آخر من خلال الرذاذ الذي يخرج في الهواء عبر السعال والعطس.
 
 بعدما كان هذا المرض نادرًا في البلدان النامية، بدأت حالات عدوى السُّل في التزايد في عام 1985 ، ويرجع ذلك -إلى حد م
       ''',
-      imageAssetPath: 'assets/images/fitness_magazine_images/img6.png',
+      imageAssetPath: 'https://plus.unsplash.com/premium_photo-1718955640503-2e26751bf9ab?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     ),
   );
 }

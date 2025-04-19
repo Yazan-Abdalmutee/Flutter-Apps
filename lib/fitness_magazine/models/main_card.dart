@@ -6,6 +6,7 @@ class MainCardData {
   String description;
   String imageAssetPath;
   Color color;
+  String tag;
 
   MainCardData({
     required this.category,
@@ -13,5 +14,7 @@ class MainCardData {
     required this.description,
     required this.imageAssetPath,
     required this.color,
+    required this.tag,
+
   });
 }

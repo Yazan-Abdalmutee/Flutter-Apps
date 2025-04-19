@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_samples/fitness_magazine/views/selected_card.dart';
 
@@ -28,13 +29,14 @@ class MainCard extends StatelessWidget {
           children: [
             Stack(
               children: [
-                Container(
-                  height: 220,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(8)),
-                    image: DecorationImage(
-                      image: AssetImage(mainCardData.imageAssetPath),
-                      fit: BoxFit.fill,
+                Hero(
+                  tag: mainCardData.tag,
+                  child: SizedBox(
+                    height: 220,
+                    child: CachedNetworkImage(
+                      width: 310,
+                      imageUrl: mainCardData.imageAssetPath,
+                      fit:BoxFit.fill ,
                     ),
                   ),
                 ),
