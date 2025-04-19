@@ -1,16 +1,15 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_ui_samples/apps/fitness_magazine/views/articlePage.dart';
 
 import '../models/main_card.dart';
 import '../utilities/color_map.dart';
 
-import 'package:flutter_ui_samples/apps/fitness_magazine/views/articlePage.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-
-
 class MainCard extends StatelessWidget {
   final MainCardData mainCardData;
   final String tag;
-  const MainCard({super.key, required this.mainCardData,required this.tag});
+
+  const MainCard({super.key, required this.mainCardData, required this.tag});
 
   @override
   Widget build(BuildContext context) {
@@ -19,15 +18,14 @@ class MainCard extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => ArticlePage(mainCardData: mainCardData,tag: tag),
+            builder:
+                (context) => ArticlePage(mainCardData: mainCardData, tag: tag),
           ),
         );
       },
       child: SizedBox(
-
         width: 310,
         child: Column(
-
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Stack(
@@ -41,9 +39,11 @@ class MainCard extends StatelessWidget {
                       child: CachedNetworkImage(
                         width: 310,
                         imageUrl: mainCardData.imageUrl,
-                        fit:BoxFit.fill ,
-                        placeholder:(context, url) => Image.asset('assets/images/fitness_magazine_images/placeholder.png'),
-                    
+                        fit: BoxFit.fill,
+                        placeholder:
+                            (context, url) => Image.asset(
+                              'assets/images/fitness_magazine_images/placeholder.png',
+                            ),
                       ),
                     ),
                   ),
@@ -88,7 +88,7 @@ class MainCard extends StatelessWidget {
             Text(
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
-              mainCardData.description,
+              mainCardData.content,
               style: TextStyle(fontSize: 22, fontFamily: 'Somar'),
             ),
           ],

@@ -1,23 +1,27 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_ui_samples/apps/fitness_magazine/utilities/theme.dart';
+import 'package:flutter_ui_samples/apps/fitness_magazine/views/sub_card.dart';
+
 import '../models/main_card.dart';
-import 'main_card.dart';
 import '../utilities/color_map.dart';
 
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_ui_samples/apps/fitness_magazine/views/sub_card.dart';
+import 'main_card.dart';
 
 final List<MainCardData> mainCards = [];
 final List<MainCardData> subCards = [];
 
+class FitnessPage extends StatefulWidget {
+  const FitnessPage({super.key});
 
+  @override
+  State<FitnessPage> createState() => _FitnessPageState();
+}
 
-class FitnessPage extends StatelessWidget {
-  FitnessPage({super.key}) {
-
-  }
-
+class _FitnessPageState extends State<FitnessPage> {
   final List<Locale> appSupportedLocales = const [Locale('ar')];
+  bool isDarkMode = false;
 
   @override
   Widget build(BuildContext context) {
@@ -34,21 +38,32 @@ class FitnessPage extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      theme: ThemeData(
-        appBarTheme: const AppBarTheme(
-          elevation: 0,
-          scrolledUnderElevation: 0,
-          backgroundColor: Color(0xFF364046),
-        ),
-      ),
+
+      theme: getLightTheme(),
+      darkTheme: getDarkTheme(),
+      themeMode: isDarkMode ? ThemeMode.dark : ThemeMode.light,
       supportedLocales: appSupportedLocales,
-      home: HomePage(),
+      home: HomePage(
+        isDarkMode: isDarkMode,
+        switchTheme: () {
+          setState(() {
+            isDarkMode = !isDarkMode;
+          });
+        },
+      ),
     );
   }
 }
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  const HomePage({
+    super.key,
+    required this.isDarkMode,
+    required this.switchTheme,
+  });
+
+  final bool isDarkMode;
+  final void Function() switchTheme;
 
   @override
   Widget build(BuildContext context) {
@@ -63,6 +78,15 @@ class HomePage extends StatelessWidget {
             style: TextStyle(color: Colors.white),
           ),
           centerTitle: true,
+          actions: [
+            IconButton(
+              icon: Icon(
+                isDarkMode ? Icons.wb_sunny : Icons.nightlight_round_outlined,
+                color: Colors.white,
+              ),
+              onPressed: switchTheme,
+            ),
+          ],
         ),
         body: Padding(
           padding: const EdgeInsets.all(15.0),
@@ -75,7 +99,10 @@ class HomePage extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemCount: mainCards.length,
                   itemBuilder: (context, index) {
-                    return MainCard(mainCardData: mainCards[index],tag: '$index+${mainCards[index].title}',);
+                    return MainCard(
+                      mainCardData: mainCards[index],
+                      tag: '$index+${mainCards[index].title}',
+                    );
                   },
                   separatorBuilder: (context, index) {
                     return SizedBox(width: 10);
@@ -84,8 +111,11 @@ class HomePage extends StatelessWidget {
               ),
               SizedBox(height: 20),
               TabBar(
-                indicatorColor: Colors.black,
-                dividerColor: Colors.white,
+                indicatorColor: Colors.blueGrey,
+                dividerColor: Colors.transparent,
+                labelColor: Colors.black,
+                labelPadding: EdgeInsets.only(bottom: 6),
+                unselectedLabelColor: Colors.white,
                 tabs: [
                   createTabBerText('تغذية'),
                   createTabBerText('صحة'),
@@ -120,10 +150,7 @@ class HomePage extends StatelessWidget {
         borderRadius: BorderRadius.circular(50),
         color: getCategoryColor(text),
       ),
-      child: Text(
-        text,
-        style: TextStyle(fontSize: 19, color: Colors.white, fontFamily: 'Somar'),
-      ),
+      child: Text(text, style: TextStyle(fontSize: 19, fontFamily: 'Somar')),
     );
   }
 
@@ -134,7 +161,10 @@ class HomePage extends StatelessWidget {
       itemBuilder: (context, index) {
         return SizedBox(
           height: 140,
-          child: SubCard(mainCardData: filteredCards[index], tag: '$index+${filteredCards[index].category}'),
+          child: SubCard(
+            mainCardData: filteredCards[index],
+            tag: '$index+${filteredCards[index].category}',
+          ),
         );
       },
       separatorBuilder: (context, index) {
@@ -152,8 +182,9 @@ void addMainCardsData() {
   mainCards.add(
     MainCardData(
       category: 'تغذية',
-      description: createLongTexts(1)!,
-      imageUrl: 'https://media.istockphoto.com/id/1210634323/photo/avocado-on-old-wooden-table-in-bowl.webp?a=1&b=1&s=612x612&w=0&k=20&c=ZQLXFhn0WVdOLBNQGU6RqkusJRUWsNg_JVAL2JFI0_E=',
+      content: createLongTexts(1)!,
+      imageUrl:
+          'https://media.istockphoto.com/id/1210634323/photo/avocado-on-old-wooden-table-in-bowl.webp?a=1&b=1&s=612x612&w=0&k=20&c=ZQLXFhn0WVdOLBNQGU6RqkusJRUWsNg_JVAL2JFI0_E=',
       title: '10 فوائد مذهلة لزيت الأفوكادو',
     ),
   );
@@ -161,8 +192,9 @@ void addMainCardsData() {
   mainCards.add(
     MainCardData(
       category: 'صحة',
-      description: createLongTexts(2)!,
-      imageUrl: 'https://images.unsplash.com/photo-1670192117184-d07467e203b3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8JUQ5JTgxJUQ5JTgyJUQ4JUIxJTIwJUQ4JUE3JUQ5JTg0JUQ4JUFGJUQ5JTg1fGVufDB8fDB8fHww',
+      content: createLongTexts(2)!,
+      imageUrl:
+          'https://images.unsplash.com/photo-1670192117184-d07467e203b3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8JUQ5JTgxJUQ5JTgyJUQ4JUIxJTIwJUQ4JUE3JUQ5JTg0JUQ4JUFGJUQ5JTg1fGVufDB8fDB8fHww',
       title: 'فقر الدم .. الأسباب، الأعراض،',
     ),
   );
@@ -170,8 +202,9 @@ void addMainCardsData() {
   mainCards.add(
     MainCardData(
       category: 'لياقة',
-      description: createLongTexts(3)!,
-      imageUrl: 'https://media.istockphoto.com/id/1149241593/photo/man-doing-cross-training-exercise-with-rope.webp?a=1&b=1&s=612x612&w=0&k=20&c=IjKWG-7_43sRh-cPC0reJMXgtgb9L_g4uAHWZa_p7TA=',
+      content: createLongTexts(3)!,
+      imageUrl:
+          'https://media.istockphoto.com/id/1149241593/photo/man-doing-cross-training-exercise-with-rope.webp?a=1&b=1&s=612x612&w=0&k=20&c=IjKWG-7_43sRh-cPC0reJMXgtgb9L_g4uAHWZa_p7TA=',
       title: '5 تمارين لانقاص الوزن',
     ),
   );
@@ -179,8 +212,9 @@ void addMainCardsData() {
   mainCards.add(
     MainCardData(
       category: 'جمال',
-      description: createLongTexts(4)!,
-      imageUrl: 'https://vid.alarabiya.net/images/2020/01/06/3cffc2ac-a0a8-464c-bc21-833a26c4d808/3cffc2ac-a0a8-464c-bc21-833a26c4d808.jpg?crop=1:1&width=1000',
+      content: createLongTexts(4)!,
+      imageUrl:
+          'https://vid.alarabiya.net/images/2020/01/06/3cffc2ac-a0a8-464c-bc21-833a26c4d808/3cffc2ac-a0a8-464c-bc21-833a26c4d808.jpg?crop=1:1&width=1000',
       title: 'فوائد الزنجبيل المطحون للشعر',
     ),
   );
@@ -190,19 +224,21 @@ void addSubCardsData() {
   subCards.add(
     MainCardData(
       category: 'تغذية',
-      description: createLongTexts(1)!,
+      content: createLongTexts(1)!,
       title: '10 فوائد مذهلة لزيت الأفوكادو',
-      imageUrl: 'https://media.istockphoto.com/id/1210634323/photo/avocado-on-old-wooden-table-in-bowl.webp?a=1&b=1&s=612x612&w=0&k=20&c=ZQLXFhn0WVdOLBNQGU6RqkusJRUWsNg_JVAL2JFI0_E=',
+      imageUrl:
+          'https://media.istockphoto.com/id/1210634323/photo/avocado-on-old-wooden-table-in-bowl.webp?a=1&b=1&s=612x612&w=0&k=20&c=ZQLXFhn0WVdOLBNQGU6RqkusJRUWsNg_JVAL2JFI0_E=',
     ),
   );
   subCards.add(
     MainCardData(
       category: 'تغذية',
       title: 'فوائد الميرمية',
-      description:
+      content:
           '''الميرميّة هي عبارة عن نبات أو عشبة تنتمي للعائلة الشفويّة (النعناع) بجانب الأعشاب الأخرى مثل الخُزامى، وإكليل الجبل، والريحان، وهي شُجيرة دائمة الخضرة ومُعمّرة، أوراقها مُتوسّطة الحجم ورماديّة اللون، وسيقانها خشبيّة صَغيرة، وتستمدّ اسمها
       ''',
-      imageUrl: 'https://images.unsplash.com/photo-1606841634219-d7dbdd97b1ec?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8U2FnZXxlbnwwfHwwfHx8MA%3D%3D',
+      imageUrl:
+          'https://images.unsplash.com/photo-1606841634219-d7dbdd97b1ec?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8U2FnZXxlbnwwfHwwfHx8MA%3D%3D',
     ),
   );
 
@@ -210,8 +246,9 @@ void addSubCardsData() {
     MainCardData(
       category: 'صحة',
       title: 'فقر الدم .. الأسباب، الأعراض',
-      description: createLongTexts(2)!,
-      imageUrl: 'https://images.unsplash.com/photo-1670192117184-d07467e203b3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8JUQ5JTgxJUQ5JTgyJUQ4JUIxJTIwJUQ4JUE3JUQ5JTg0JUQ4JUFGJUQ5JTg1fGVufDB8fDB8fHww',
+      content: createLongTexts(2)!,
+      imageUrl:
+          'https://images.unsplash.com/photo-1670192117184-d07467e203b3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8JUQ5JTgxJUQ5JTgyJUQ4JUIxJTIwJUQ4JUE3JUQ5JTg0JUQ4JUFGJUQ5JTg1fGVufDB8fDB8fHww',
     ),
   );
 
@@ -219,17 +256,19 @@ void addSubCardsData() {
     MainCardData(
       category: 'جمال',
       title: 'فوائد الزنجبيل المطحون للشعر',
-      description: createLongTexts(4)!,
-      imageUrl: 'https://vid.alarabiya.net/images/2020/01/06/3cffc2ac-a0a8-464c-bc21-833a26c4d808/3cffc2ac-a0a8-464c-bc21-833a26c4d808.jpg?crop=1:1&width=1000',
+      content: createLongTexts(4)!,
+      imageUrl:
+          'https://vid.alarabiya.net/images/2020/01/06/3cffc2ac-a0a8-464c-bc21-833a26c4d808/3cffc2ac-a0a8-464c-bc21-833a26c4d808.jpg?crop=1:1&width=1000',
     ),
   );
 
   subCards.add(
     MainCardData(
       category: 'لياقة',
-      description: createLongTexts(3)!,
+      content: createLongTexts(3)!,
       title: '5 تمارين لانقاص الوزن',
-      imageUrl: 'https://media.istockphoto.com/id/1149241593/photo/man-doing-cross-training-exercise-with-rope.webp?a=1&b=1&s=612x612&w=0&k=20&c=IjKWG-7_43sRh-cPC0reJMXgtgb9L_g4uAHWZa_p7TA=',
+      imageUrl:
+          'https://media.istockphoto.com/id/1149241593/photo/man-doing-cross-training-exercise-with-rope.webp?a=1&b=1&s=612x612&w=0&k=20&c=IjKWG-7_43sRh-cPC0reJMXgtgb9L_g4uAHWZa_p7TA=',
     ),
   );
 
@@ -237,12 +276,13 @@ void addSubCardsData() {
     MainCardData(
       category: 'صحة',
       title: 'مرض السل',
-      description:
+      content:
           '''السُل مرض معدٍ خطير يُصيب الرئتين في الأساس. تنتقل البكتيريا التي تتسبَّب في الإصابة بمرض السُل من شخص إلى آخر من خلال الرذاذ الذي يخرج في الهواء عبر السعال والعطس.
 
 بعدما كان هذا المرض نادرًا في البلدان النامية، بدأت حالات عدوى السُّل في التزايد في عام 1985 ، ويرجع ذلك -إلى حد م
       ''',
-      imageUrl: 'https://plus.unsplash.com/premium_photo-1718955640503-2e26751bf9ab?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      imageUrl:
+          'https://plus.unsplash.com/premium_photo-1718955640503-2e26751bf9ab?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     ),
   );
 }

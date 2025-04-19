@@ -1,9 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import '../models/main_card.dart';
-
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 
 class ArticlePage extends StatelessWidget {
   final MainCardData mainCardData;
@@ -52,7 +51,7 @@ class ArticlePage extends StatelessWidget {
                   ),
                 ],
               ),
-          
+
               Positioned(
                 top: 260,
                 bottom: 0,
@@ -70,17 +69,14 @@ class ArticlePage extends StatelessWidget {
                         children: [
                           Text(
                             mainCardData.title,
-                            style: TextStyle(
-                              fontSize: 30,
-                              fontFamily: 'Somar',
-                            ),
+                            style: TextStyle(fontSize: 30, fontFamily: 'Somar'),
                             textAlign: TextAlign.center,
                           ),
                           SizedBox(height: 10),
                           Align(
                             alignment: Alignment.topRight,
                             child: Text(
-                              mainCardData.description,
+                              mainCardData.content,
                               style: TextStyle(
                                 fontSize: 18,
                                 fontFamily: 'Somar',

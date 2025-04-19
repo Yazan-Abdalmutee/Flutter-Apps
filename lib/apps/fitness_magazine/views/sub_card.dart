@@ -1,15 +1,15 @@
-import 'package:flutter/material.dart';
-
-import 'package:flutter_ui_samples/apps/fitness_magazine/utilities/color_map.dart';
-import '../models/main_card.dart';
-
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_ui_samples/apps/fitness_magazine/utilities/color_map.dart';
 import 'package:flutter_ui_samples/apps/fitness_magazine/views/articlePage.dart';
+
+import '../models/main_card.dart';
 
 class SubCard extends StatelessWidget {
   final MainCardData mainCardData;
   final String tag;
-  const SubCard({super.key, required this.mainCardData,required this.tag});
+
+  const SubCard({super.key, required this.mainCardData, required this.tag});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,8 @@ class SubCard extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => ArticlePage(mainCardData: mainCardData,tag: tag,),
+            builder:
+                (context) => ArticlePage(mainCardData: mainCardData, tag: tag),
           ),
         );
       },
@@ -36,7 +37,7 @@ class SubCard extends StatelessWidget {
                   child: CachedNetworkImage(
                     height: 140,
                     imageUrl: mainCardData.imageUrl,
-                    fit:BoxFit.fill ,
+                    fit: BoxFit.fill,
                   ),
                 ),
               ),
@@ -49,7 +50,7 @@ class SubCard extends StatelessWidget {
                         child: Text(
                           maxLines: 3,
                           overflow: TextOverflow.ellipsis,
-                          mainCardData.description,
+                          mainCardData.content,
                           style: TextStyle(
                             fontSize: 15,
                             color: Colors.white,
@@ -61,10 +62,16 @@ class SubCard extends StatelessWidget {
                         children: [
                           Spacer(),
                           Icon(Icons.share, color: Colors.white),
-                          SizedBox(width: 6,),
-                          Icon(Icons.favorite_border_outlined, color: Colors.white),
-                          SizedBox(width: 6,),
-                          Icon(Icons.remove_red_eye_outlined, color: Colors.white),
+                          SizedBox(width: 6),
+                          Icon(
+                            Icons.favorite_border_outlined,
+                            color: Colors.white,
+                          ),
+                          SizedBox(width: 6),
+                          Icon(
+                            Icons.remove_red_eye_outlined,
+                            color: Colors.white,
+                          ),
                         ],
                       ),
                     ],
