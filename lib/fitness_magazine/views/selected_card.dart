@@ -56,14 +56,14 @@ class SelectedCard extends StatelessWidget {
                 bottom: 0,
                 left: 0,
                 right: 0,
-                child: SingleChildScrollView(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(Radius.circular(30)),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.all(Radius.circular(30)),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: SingleChildScrollView(
                       child: Column(
                         children: [
                           Text(
