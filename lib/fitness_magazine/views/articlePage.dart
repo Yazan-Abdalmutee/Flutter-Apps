@@ -1,14 +1,16 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 
 import '../models/main_card.dart';
 
-class SelectedCard extends StatelessWidget {
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+
+class ArticlePage extends StatelessWidget {
   final MainCardData mainCardData;
+  final String tag;
   final List<Locale> appSupportedLocales = const [Locale('ar')];
 
-  const SelectedCard({super.key, required this.mainCardData});
+  const ArticlePage({super.key, required this.mainCardData, required this.tag});
 
   @override
   Widget build(BuildContext context) {
@@ -29,11 +31,11 @@ class SelectedCard extends StatelessWidget {
               Stack(
                 children: [
                   Hero(
-                    tag: mainCardData.tag,
+                    tag: tag,
                     child: SizedBox(
                       height: 300,
                       child: CachedNetworkImage(
-                        imageUrl: mainCardData.imageAssetPath,
+                        imageUrl: mainCardData.imageUrl,
                         fit: BoxFit.fill,
                       ),
                     ),

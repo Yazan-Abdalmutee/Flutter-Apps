@@ -1,13 +1,14 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_samples/fitness_magazine/views/selected_card.dart';
 
 import '../models/main_card.dart';
 
+import 'package:flutter_ui_samples/fitness_magazine/views/articlePage.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+
 class MainCard extends StatelessWidget {
   final MainCardData mainCardData;
-
-  const MainCard({super.key, required this.mainCardData});
+  final String tag;
+  const MainCard({super.key, required this.mainCardData,required this.tag});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class MainCard extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => SelectedCard(mainCardData: mainCardData),
+            builder: (context) => ArticlePage(mainCardData: mainCardData,tag: tag),
           ),
         );
       },
@@ -30,15 +31,16 @@ class MainCard extends StatelessWidget {
             Stack(
               children: [
                 Hero(
-                  tag: mainCardData.tag,
+                  tag: tag,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(15),
                     child: SizedBox(
                       height: 220,
                       child: CachedNetworkImage(
                         width: 310,
-                        imageUrl: mainCardData.imageAssetPath,
+                        imageUrl: mainCardData.imageUrl,
                         fit:BoxFit.fill ,
+                        placeholder:(context, url) => Image.asset('assets/images/fitness_magazine_images/placeholder.png'),
                     
                       ),
                     ),

@@ -4,17 +4,15 @@ class MainCardData {
   String category;
   String title;
   String description;
-  String imageAssetPath;
+  String imageUrl;
   Color color;
-  String tag;
 
   MainCardData({
     required this.category,
     required this.title,
     required this.description,
-    required this.imageAssetPath,
+    required this.imageUrl,
     required this.color,
-    required this.tag,
 
   });
 }
