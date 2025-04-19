@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../models/main_card.dart';
 import 'main_card.dart';
+import '../utilities/color_map.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_ui_samples/fitness_magazine/views/sub_card.dart';
@@ -111,9 +112,19 @@ class HomePage extends StatelessWidget {
   }
 
   Widget createTabBerText(String text) {
-    return Text(
-      text,
-      style: TextStyle(fontSize: 19, color: Colors.black, fontFamily: 'Somar'),
+    return Container(
+      alignment: Alignment.center,
+      width: 90,
+      height: 50,
+
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(50),
+        color: getCategoryColor(text),
+      ),
+      child: Text(
+        text,
+        style: TextStyle(fontSize: 19, color: Colors.white, fontFamily: 'Somar'),
+      ),
     );
   }
 
