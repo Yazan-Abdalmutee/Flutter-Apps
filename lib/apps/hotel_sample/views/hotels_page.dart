@@ -179,7 +179,7 @@ void addDummyData() {
       hotelName: 'Grand Royal Hotel',
       price: 180,
       location: 'Wembley, London',
-      imageAssetPath: 'assets/images/hotel_1.png',
+      imageAssetPath: 'assets/hotel_sample_assets/images/hotel_1.png',
     ),
   );
   cards.add(
@@ -187,7 +187,7 @@ void addDummyData() {
       hotelName: 'The Battle House Hotel',
       price: 200,
       location: 'Paris, France',
-      imageAssetPath: 'assets/images/hotel_2.png',
+      imageAssetPath: 'assets/hotel_sample_assets/images/hotel_2.png',
     ),
   );
 
@@ -196,7 +196,7 @@ void addDummyData() {
       hotelName: 'Russel Erskine Hotel',
       price: 170,
       location: 'Madrid, Spain',
-      imageAssetPath: 'assets/images/hotel_3.png',
+      imageAssetPath: 'assets/hotel_sample_assets/images/hotel_3.png',
     ),
   );
 
@@ -205,7 +205,7 @@ void addDummyData() {
       hotelName: 'Thomas Jefferson Hotel',
       price: 120,
       location: 'Berlin, Germany',
-      imageAssetPath: 'assets/images/hotel_4.png',
+      imageAssetPath: 'assets/hotel_sample_assets/images/hotel_4.png',
     ),
   );
 }

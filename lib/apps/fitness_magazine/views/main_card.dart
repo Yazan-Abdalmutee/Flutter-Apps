@@ -42,7 +42,7 @@ class MainCard extends StatelessWidget {
                         fit: BoxFit.fill,
                         placeholder:
                             (context, url) => Image.asset(
-                              'assets/images/fitness_magazine_images/placeholder.png',
+                              'assets/fitness_magazine_assets/images/placeholder.png',
                             ),
                       ),
                     ),

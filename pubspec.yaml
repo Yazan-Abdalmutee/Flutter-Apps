@@ -81,22 +81,22 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/images/
-    - assets/images/fitness_magazine_images/
+    - assets/fitness_magazine_assets/images/
+    - assets/hotel_sample_assets/images/
     - assets/icons/
-    - assets/audio/
+    - assets/xylophone_assets/audio/
   fonts:
     - family: Roboto
       fonts:
-        - asset: assets/fonts/Roboto-Regular.ttf
-        - asset: assets/fonts/Roboto-Medium.ttf
-        - asset: assets/fonts/Roboto-Bold.ttf
+        - asset: assets/hotel_sample_assets/fonts/Roboto-Regular.ttf
+        - asset: assets/hotel_sample_assets/fonts/Roboto-Medium.ttf
+        - asset: assets/hotel_sample_assets/fonts/Roboto-Bold.ttf
           weight: 700
     - family: Somar
       fonts:
-        - asset: assets/fonts/fitness_magazine_fonts/Somar-Regular.otf
-        - asset: assets/fonts/fitness_magazine_fonts/Somar-Black.otf
-        - asset: assets/fonts/fitness_magazine_fonts/Somar-Bold.otf
+        - asset: assets/fitness_magazine_assets/fonts/Somar-Regular.otf
+        - asset: assets/fitness_magazine_assets/fonts/Somar-Black.otf
+        - asset: assets/fitness_magazine_assets/fonts/Somar-Bold.otf
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 

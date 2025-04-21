@@ -48,7 +48,7 @@ class Tile extends StatelessWidget {
         onTap: ()async
     {
 
-      await player.setAsset('assets/audio/$noteSound');
+      await player.setAsset('assets/xylophone_assets/audio/$noteSound');
       player.play();
         },
         child: Container(
