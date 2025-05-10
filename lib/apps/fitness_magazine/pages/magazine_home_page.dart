@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_ui_samples/apps/fitness_magazine/components/sub_card.dart';
 
 import '../models/main_card.dart';
@@ -511,4 +510,5 @@ String? createLongTexts(int number) {
     
     ''';
   }
+  return null;
 }
