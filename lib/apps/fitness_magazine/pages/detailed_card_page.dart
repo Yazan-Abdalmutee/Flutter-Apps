@@ -72,7 +72,7 @@ class ArticlePage extends StatelessWidget {
                             style: TextStyle(fontSize: 30, fontFamily: 'Somar'),
                             textAlign: TextAlign.center,
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           Align(
                             alignment: Alignment.topRight,
                             child: Text(

@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_samples/apps/fitness_magazine/utilities/color_map.dart';
-import 'package:flutter_ui_samples/apps/fitness_magazine/views/articlePage.dart';
 
 import '../models/main_card.dart';
+import '../pages/detailed_card_page.dart';
+import '../utils/color_map.dart';
 
 class SubCard extends StatelessWidget {
   final MainCardData mainCardData;
@@ -62,12 +62,12 @@ class SubCard extends StatelessWidget {
                         children: [
                           Spacer(),
                           Icon(Icons.share, color: Colors.white),
-                          SizedBox(width: 6),
+                          const SizedBox(width: 6),
                           Icon(
                             Icons.favorite_border_outlined,
                             color: Colors.white,
                           ),
-                          SizedBox(width: 6),
+                          const SizedBox(width: 6),
                           Icon(
                             Icons.remove_red_eye_outlined,
                             color: Colors.white,

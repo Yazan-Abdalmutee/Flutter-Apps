@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_samples/apps/fitness_magazine/views/articlePage.dart';
 
 import '../models/main_card.dart';
-import '../utilities/color_map.dart';
+import '../pages/detailed_card_page.dart';
+import '../utils/color_map.dart';
 
 class MainCard extends StatelessWidget {
   final MainCardData mainCardData;
@@ -59,7 +59,7 @@ class MainCard extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Container(
               color: getCategoryColor(mainCardData.category),
               width: 100,
@@ -73,7 +73,7 @@ class MainCard extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
 
             Text(
               mainCardData.title,
@@ -83,7 +83,7 @@ class MainCard extends StatelessWidget {
                 fontFamily: 'Somar',
               ),
             ),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
 
             Text(
               maxLines: 2,

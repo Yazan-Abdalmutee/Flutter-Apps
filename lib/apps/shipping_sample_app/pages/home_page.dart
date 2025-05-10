@@ -67,31 +67,31 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ],
                     ),
-                    SizedBox(height: 15),
+                    const SizedBox(height: 15),
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         children: [
                           createFilterChip("All", Colors.orange, Colors.white),
-                          SizedBox(width: 10),
+                          const SizedBox(width: 10),
                           createFilterChip(
                             "Complete",
                             Colors.white,
                             Colors.black,
                           ),
-                          SizedBox(width: 10),
+                          const SizedBox(width: 10),
                           createFilterChip(
                             "In Delivery",
                             Colors.white,
                             Colors.black,
                           ),
-                          SizedBox(width: 10),
+                          const SizedBox(width: 10),
                           createFilterChip(
                             "Pending",
                             Colors.white,
                             Colors.black,
                           ),
-                          SizedBox(width: 10),
+                          const SizedBox(width: 10),
                           createFilterChip(
                             "Cancelled",
                             Colors.white,
@@ -100,7 +100,7 @@ class _HomePageState extends State<HomePage> {
                         ],
                       ),
                     ),
-                    SizedBox(height: 15),
+                    const SizedBox(height: 15),
                     Expanded(child: createListView()),
                   ],
                 ),
@@ -125,7 +125,7 @@ class _HomePageState extends State<HomePage> {
         return PackageCard(cardData: cards[index]);
       },
       separatorBuilder: (context, index) {
-        return SizedBox(height: 10);
+        return const SizedBox(height: 10);
       },
     );
   }

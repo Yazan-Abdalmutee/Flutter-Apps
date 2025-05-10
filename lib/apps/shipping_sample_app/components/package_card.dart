@@ -130,7 +130,7 @@ class _PackageCardState extends State<PackageCard> {
                 ),
               ],
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -176,7 +176,7 @@ class _PackageCardState extends State<PackageCard> {
               ],
             ),
 
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
           ],
         ),
       ),

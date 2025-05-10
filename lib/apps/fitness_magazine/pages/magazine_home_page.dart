@@ -1,28 +1,31 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_ui_samples/apps/fitness_magazine/utilities/theme.dart';
-import 'package:flutter_ui_samples/apps/fitness_magazine/views/sub_card.dart';
+import 'package:flutter_ui_samples/apps/fitness_magazine/components/sub_card.dart';
 
 import '../models/main_card.dart';
-import '../utilities/color_map.dart';
 
-import 'main_card.dart';
+import '../components/main_card.dart';
+import '../utils/color_map.dart';
 
 final List<MainCardData> mainCards = [];
 final List<MainCardData> subCards = [];
 
 class FitnessPage extends StatefulWidget {
-  const FitnessPage({super.key});
+  final bool isDarkMode;
+  final VoidCallback switchTheme;
+
+  const FitnessPage({
+    super.key,
+    required this.isDarkMode,
+    required this.switchTheme,
+  });
 
   @override
   State<FitnessPage> createState() => _FitnessPageState();
 }
 
 class _FitnessPageState extends State<FitnessPage> {
-  final List<Locale> appSupportedLocales = const [Locale('ar')];
-  bool isDarkMode = false;
-
   @override
   Widget build(BuildContext context) {
     mainCards.clear();
@@ -30,27 +33,9 @@ class _FitnessPageState extends State<FitnessPage> {
     addMainCardsData();
     addSubCardsData();
     //print(MediaQuery.of(context).size);
-    return MaterialApp(
-      title: 'Fitness Magazines',
-      debugShowCheckedModeBanner: false,
-      localizationsDelegates: const [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-
-      theme: getLightTheme(),
-      darkTheme: getDarkTheme(),
-      themeMode: isDarkMode ? ThemeMode.dark : ThemeMode.light,
-      supportedLocales: appSupportedLocales,
-      home: HomePage(
-        isDarkMode: isDarkMode,
-        switchTheme: () {
-          setState(() {
-            isDarkMode = !isDarkMode;
-          });
-        },
-      ),
+    return HomePage(
+      isDarkMode: widget.isDarkMode,
+      switchTheme: widget.switchTheme,
     );
   }
 }
@@ -105,11 +90,11 @@ class HomePage extends StatelessWidget {
                     );
                   },
                   separatorBuilder: (context, index) {
-                    return SizedBox(width: 10);
+                    return const SizedBox(width: 10);
                   },
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TabBar(
                 indicatorColor: Colors.blueGrey,
                 dividerColor: Colors.transparent,
